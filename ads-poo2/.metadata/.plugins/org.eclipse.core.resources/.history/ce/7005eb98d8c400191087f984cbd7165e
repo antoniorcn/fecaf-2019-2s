@@ -1,0 +1,14 @@
+package aula1;
+public class Teste {
+	public static void main(String[] args) {
+		double soma = 0.0;
+		int count = 0;
+		double valorMensal = 74.33; 
+		while( count < 6 ) { 
+			soma += valorMensal;
+			String texto =
+					String.format("Mês: %d Acumulado: %6.2f", ++count, soma);
+			System.out.println(texto);	
+		}
+	}
+}

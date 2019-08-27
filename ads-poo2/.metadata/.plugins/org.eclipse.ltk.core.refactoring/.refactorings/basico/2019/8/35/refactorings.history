@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Temperatura.java&apos; to &apos;basico/src/aula4&apos;&#x0D;&#x0A;- Original project: &apos;basico&apos;&#x0D;&#x0A;- Destination element: &apos;basico/src/aula4&apos;&#x0D;&#x0A;- Original element: &apos;aula4.Temperatura.java&apos;" description="Copy compilation unit" destination="/src&lt;aula4" element1="/src&lt;aula4{Temperatura.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1566866130313" units="1" version="1.0"/>
+</session>

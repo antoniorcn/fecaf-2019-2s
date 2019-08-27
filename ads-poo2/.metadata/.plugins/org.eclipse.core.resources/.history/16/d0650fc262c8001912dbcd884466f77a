@@ -1,0 +1,16 @@
+package aula4;
+
+public class Temperatura4 {
+	
+	public static void main(String args[]) {
+		System.out.println("Inicio");
+		int temp = 11;
+		if (temp < 9) { 
+			System.out.println("Frio");
+		} else { 
+			System.out.println("Calor");
+		}
+		System.out.println("Fim");
+	}
+
+}

@@ -1,0 +1,19 @@
+package aula4;
+
+import java.util.Scanner;
+
+public class Temperatura2 {
+	public static void main(String[] args) {
+		System.out.println("Inicio");
+		Scanner scan = new Scanner(System.in);
+		int temp = 22;
+		if (temp < 9) { 
+			System.out.println("Frio");
+		} else { 
+			System.out.println("Calor");
+		}
+		scan.close();
+		System.out.println("Fim");
+	}
+
+}
