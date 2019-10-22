@@ -19,10 +19,11 @@
 <fullyQualifiedTypeName name="javafx.scene.Scene"/>
 <fullyQualifiedTypeName name="javafx.scene.control.Label"/>
 <fullyQualifiedTypeName name="javafx.scene.control.TextField"/>
-<fullyQualifiedTypeName name="javafx.scene.layout.ColumnConstraints"/>
 <fullyQualifiedTypeName name="javafx.scene.control.Button"/>
 <fullyQualifiedTypeName name="javafx.event.EventHandler"/>
 <fullyQualifiedTypeName name="javafx.event.ActionEvent"/>
 <fullyQualifiedTypeName name="aula17.entidade.Aluno"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.ColumnConstraints"/>
+<fullyQualifiedTypeName name="aula18.control.AlunoControl"/>
 </qualifiedTypeNameHistroy>
