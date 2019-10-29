@@ -5,4 +5,8 @@ public class Aluno {
 	String nome;
 	Aluno outro;
 	int[] espaco = new int[30000];
+	
+	public String getRa() { 
+		return ra;
+	}
 }
