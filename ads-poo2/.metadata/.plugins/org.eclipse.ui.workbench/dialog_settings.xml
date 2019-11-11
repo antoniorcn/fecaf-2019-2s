@@ -4,16 +4,12 @@
 		<item key="dialogHeight" value="669"/>
 		<item key="dialogWidth" value="829"/>
 		<list key="orderedElements">
-			<item value="org.eclipse.jdt.ui.edit.text.java.create.getter.setter"/>
 		</list>
 		<list key="orderedProviders">
-			<item value="org.eclipse.ui.commands"/>
 		</list>
 		<list key="textEntries">
-			<item value="1"/>
 		</list>
 		<list key="textArray">
-			<item value="getter"/>
 		</list>
 	</section>
 	<section name="NewWizardAction">
@@ -29,5 +25,9 @@
 	<section name="WorkbenchPreferenceDialogSettings">
 		<item key="DIALOG_X_ORIGIN" value="336"/>
 		<item key="DIALOG_Y_ORIGIN" value="8"/>
+	</section>
+	<section name="ImportExportAction">
+	</section>
+	<section name="ZipFileExportWizard">
 	</section>
 </section>
