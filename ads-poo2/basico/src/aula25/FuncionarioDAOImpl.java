@@ -1,6 +1,7 @@
 package aula25;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
@@ -21,15 +22,15 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 	
 	public void adicionar(Funcionario f) { 
 		String sql = "INSERT INTO funcionario "
-				+ "(id, matricula, nome, cpf, tempo_servico) "
+				+ "(matricula, nome, cpf, tempo_servico, data_contratacao) "
 				+ "VALUES (?, ?, ?, ?, ?)";
 		try { 
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setLong(1, f.getId());
-			st.setString(2, f.getMatricula());
-			st.setString(3, f.getNome());
-			st.setString(4, f.getCpf());
-			st.setInt(5, f.getTempoServico());
+			st.setString(1, f.getMatricula());
+			st.setString(2, f.getNome());
+			st.setString(3, f.getCpf());
+			st.setInt(4, f.getTempoServico());
+			st.setDate(5, new java.sql.Date(f.getContratacao().getTime()));
 			st.executeUpdate();
 		} catch (Exception e) { 
 			e.printStackTrace();

@@ -1,32 +1,33 @@
 package aula25;
 
-import javafx.application.Application;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
+import javafx.scene.layout.Pane;
 
-public class FuncionarioBoundary extends Application 
-			implements EventHandler<ActionEvent>{
+public class FuncionarioBoundary implements 
+	BoundaryConteudo, EventHandler<ActionEvent>{
 	private TextField txtId = new TextField();
 	private TextField txtMatricula = new TextField();
 	private TextField txtNome = new TextField();
 	private TextField txtCpf = new TextField();
 	private TextField txtTempoServico = new TextField();
-	
+	private DatePicker dtpContratacao = new DatePicker();
 	private Button btnAdicionar = new Button("Adicionar");
-	
 	private FuncionarioControl control = new FuncionarioControl();
 	
 	@Override
-	public void start(Stage stage) throws Exception {
+	public Pane gerarTela() {
 		GridPane pane = new GridPane();
-		Scene scn = new Scene(pane, 400, 200);
-		
+	
 		pane.add(new Label("Id"), 0, 0);
 		pane.add(txtId, 1, 0);
 		pane.add(new Label("Matricula"), 0, 1);
@@ -35,19 +36,14 @@ public class FuncionarioBoundary extends Application
 		pane.add(txtNome, 1, 2);
 		pane.add(new Label("CPF"), 0, 3);
 		pane.add(txtCpf, 1, 3);
-		pane.add(new Label("Tempo de Servico"), 0, 4);
-		pane.add(txtTempoServico, 1, 4);
-		pane.add(btnAdicionar, 0, 5);
+		pane.add(new Label("Data de Contratação"), 0, 4);
+		pane.add(dtpContratacao, 1, 4);
+		pane.add(new Label("Tempo de Servico"), 0, 5);
+		pane.add(txtTempoServico, 1, 5);
+		pane.add(btnAdicionar, 0, 6);
 		
 		btnAdicionar.addEventHandler(ActionEvent.ANY, this);
-		
-		stage.setScene(scn);
-		stage.setTitle("Gestão de Funcionarios");
-		stage.show();
-	}
-	
-	public static void main(String[] args) {
-		launch(FuncionarioBoundary.class, args);
+		return pane;
 	}
 	
 	public void handle(ActionEvent e) { 
@@ -59,7 +55,10 @@ public class FuncionarioBoundary extends Application
 			f.setTempoServico(
 				Integer.parseInt(txtTempoServico.getText()));
 			f.setId(Long.parseLong(txtId.getText()));
-			
+			LocalDate d = dtpContratacao.getValue();
+			Date data = Date.from(
+					d.atStartOfDay(ZoneId.systemDefault()).toInstant());
+			f.setContratacao(data);
 			control.adicionar( f );
 		}
 	}

@@ -43,15 +43,15 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 		}
 	}
 	
-//	public static void main(String[] args) {
-//		ProdutoDAO pDao = new ProdutoDAOImpl();
-//		Produto p = new Produto();
-//		p.setCodigo("11111");
-//		p.setNome("Tenis Nike");
-//		p.setPeso(200.0);
-//		p.setPreco(900.0);
-//		p.setValidade(new java.util.Date());
-//		
-//		pDao.adicionar(p);
-//	}
+	public static void main(String[] args) {
+		ProdutoDAO pDao = new ProdutoDAOImpl();
+		Produto prod = new Produto();
+		prod.setCodigo("11111");
+		prod.setNome("Tenis Nike");
+		prod.setPeso(200.0);
+		prod.setPreco(900.0);
+		prod.setValidade(new java.util.Date());
+		
+		pDao.adicionar(prod);
+	}
 }

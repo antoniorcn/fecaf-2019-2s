@@ -1,11 +1,14 @@
 package aula25;
 
+import java.util.Date;
+
 public class Funcionario {
 	private long id;
 	private String matricula;
 	private String nome;
 	private String cpf;
 	private int tempoServico;
+	private Date dataContratacao;
 
 	public int getTempoServico() {
 		return tempoServico;
@@ -40,5 +43,12 @@ public class Funcionario {
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+	
+	public Date getContratacao() {
+		return this.dataContratacao;
+	}
+	public void setContratacao(Date dataContracao) { 
+		this.dataContratacao = dataContracao;
 	}
 }
