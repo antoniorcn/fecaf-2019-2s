@@ -20,7 +20,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
 	public ProdutoDAOImpl() { 
 		try { 
 			con = DriverManager.getConnection(URL, USER, PASS);
-			System.out.println("Conectado");
+			// System.out.println("Conectado");
 		} catch (Exception e) { 
 			e.printStackTrace();
 		}
