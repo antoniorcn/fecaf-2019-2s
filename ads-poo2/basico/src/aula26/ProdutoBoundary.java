@@ -5,10 +5,14 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -40,10 +44,22 @@ public class ProdutoBoundary implements BoundaryConteudo,
 				FXCollections.observableArrayList("Item 1", "Item 2", "Item 3", "Item 4");
 		listView.setItems(elementosList);
 		listView.setPrefHeight(100);
+		
+		table.getSelectionModel().selectedItemProperty().addListener(
+				new ChangeListener<Produto>() {
+					@Override
+					public void changed(ObservableValue<? extends Produto> observable, 
+							Produto oldValue,
+							Produto newValue) {
+						entidadeParaBoundary(newValue);
+					}
+				}
+		);
 		BorderPane border = new BorderPane();
 		GridPane pane = new GridPane();
 		Button btnUp = new Button("Up");
 		Button btnDown = new Button("Down");
+		Button btnExcluir = new Button("Excluir");
 		pane.add(new Label("Id"), 0, 0);
 		pane.add(txtId, 1, 0);
 		pane.add(new Label("Codigo"), 0, 1);
@@ -62,6 +78,7 @@ public class ProdutoBoundary implements BoundaryConteudo,
 		pane.add(btnDown, 2, 8);
 		pane.add(btnAdicionar, 0, 9);
 		pane.add(btnPesquisar, 1, 9);
+		pane.add(btnExcluir, 2, 9);
 		
 		btnUp.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -75,6 +92,14 @@ public class ProdutoBoundary implements BoundaryConteudo,
 			}
 		});
 		
+		
+		btnExcluir.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) { 
+				Produto p = table.getSelectionModel().getSelectedItem();
+				control.getLista().remove(p);
+				// control.remover(p.getId());
+			}
+		});
 		
 		
 		TableColumn<Produto, Long> colId = new TableColumn<>("Id");
@@ -103,16 +128,24 @@ public class ProdutoBoundary implements BoundaryConteudo,
 	
 	public Produto boundaryParaEntidade() { 
 		Produto p = new Produto();
-		p.setCodigo(txtCodigo.getText());
-		p.setNome(txtNome.getText());
-		p.setId(Long.parseLong(txtId.getText()));
-		p.setPreco(Double.parseDouble(txtPreco.getText()));
-		p.setPeso(Double.parseDouble(txtPeso.getText()));
-		
-		LocalDate d = dtpValidade.getValue();
-		Date data = Date.from(
-				d.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		p.setValidade(data);
+		try { 
+			p.setCodigo(txtCodigo.getText());
+			p.setNome(txtNome.getText());
+			p.setId(Long.parseLong(txtId.getText()));
+			p.setPreco(Double.parseDouble(txtPreco.getText()));
+			p.setPeso(Double.parseDouble(txtPeso.getText()));
+			
+			LocalDate d = dtpValidade.getValue();
+			Date data = Date.from(
+					d.atStartOfDay(ZoneId.systemDefault()).toInstant());
+			p.setValidade(data);
+		} catch (Exception e) { 
+			Alert a = new Alert(AlertType.ERROR);
+			a.setTitle("Erro");
+			a.setHeaderText("Erro ao cadastrar o produto");
+			a.setContentText("Erro ao converter os campos, por favor verifique os dados");
+			a.showAndWait();
+		}
 		return p;
 	}
 	

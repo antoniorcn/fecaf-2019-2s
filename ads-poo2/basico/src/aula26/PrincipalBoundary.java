@@ -25,6 +25,7 @@ public class PrincipalBoundary extends Application {
 	public void start(Stage stage) { 
 		BorderPane pane = new BorderPane();
 		Scene scn = new Scene(pane, 640, 480);
+
 		
 		Image image = new Image("file:images/supermercado.jpg");
 		imgView = new ImageView(image);
@@ -76,6 +77,4 @@ public class PrincipalBoundary extends Application {
 	public static void main(String[] args) {
 		launch(PrincipalBoundary.class, args);
 	}
-	
-
 }
